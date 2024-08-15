@@ -11,7 +11,7 @@ body{
     display:flex;
     height:50px;
     justify-content: space-between;
-    align-items: center;
+    align-items:center;
 }
 
 .menu{
@@ -23,18 +23,23 @@ body{
     display: inline-block;
 }
 
+.drpdwn>div:nth-child(1){
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
 .drpdwncontent{
     float:left;
     left:19px;
     top: 36px;
-    display: none;
+    display: block;
     position: absolute;
     width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(243, 14, 14, 0.2);
     z-index: 1
 }
 
-.drpdwn:hover .drpdwncontent{
+.drpdwn .drpdwncontent{
     display: block;
     background-color: #333;
     height:200px;
@@ -52,9 +57,13 @@ body{
 
 .product{
     display:flex;
-    height:500px;
+    height:600px;
     border:1px solid lightblue;
-    margin-top:10px ;
+    margin-top:10px;
+}
+
+.product>div{
+    margin:10px 5px 10px 5px;
 }
 
 .header div {
@@ -80,4 +89,32 @@ a:hover{
         flex-direction: column;
     }
 
+  }
+
+  .card{
+    max-width:200px;
+    height:450px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border:1px solid #000;
+  }
+
+  .price{
+    color:grey;
+    font-size: 22px;
+  }
+
+  .card button{
+    border:none;
+    outline:0;
+    padding:12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .card button:hover{
+    opacity:0.7;
   }
