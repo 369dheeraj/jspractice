@@ -58,14 +58,13 @@ body{
 .product{
     display:flex;
     height:600px;
-    border:1px solid lightblue;
-    margin-top:10px;
+    margin:10px;
     flex-wrap: wrap;
     overflow: auto;
 }
 
 .product>div{
-    margin:10px 5px 10px 5px;
+    margin: 5px auto;
 }
 
 .header div {
@@ -95,10 +94,10 @@ a:hover{
 
   .card{
     width:300px;
-    height:450px;
+    height:400px;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border:1px solid #000;
+    
   }
 
   .card .title{
@@ -120,13 +119,14 @@ a:hover{
     height:250px;
     overflow:hidden;
     object-fit:contain;
-  
+    
   }
 
   .price{
     color:grey;
     font-size: 22px;
-    margin: 5px;
+    margin: 15px 0;
+    text-align: center;
   }
 
   .card button{
@@ -138,6 +138,7 @@ a:hover{
     text-align: center;
     cursor: pointer;
     width: 100%;
+    font-size: 15px;
   }
 
   .card button:hover{
