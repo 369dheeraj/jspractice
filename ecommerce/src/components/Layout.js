@@ -1,8 +1,28 @@
-import React from "react";
+import {React, useEffect, useState} from "react";
 import Menu from "./Menu";
+import Product from "./Product";
 import '../stylesheet/layout.css'
+import getProductList from '../service/GetProductService'
+
 
 const Layout = () => {
+
+    const [product,setProduct] = useState([]);
+
+    useEffect(()=>{
+        const fetchProductList = async() => {
+            try {
+                const url='https://fakestoreapi.com/products';
+                const data = await getProductList(url);
+                console.log(data);
+                setProduct(data);
+            }catch(err){
+                console.log(`Error in fetchProductList ${err}`)
+            }
+        }
+        fetchProductList()
+    },[])
+
     return (
         <>
             <div class="header">
@@ -15,18 +35,10 @@ const Layout = () => {
                 </div>
             </div>
             <div class="product">
-                <div class="card">
-                    <img src="https://www.w3schools.com/w3images/jeans3.jpg" alt="Denim Jeans" />
-                    <h2>Tailored Jeans</h2>
-                    <p class="price">$19.99</p>
-                    <p><button>Add to Cart</button></p>
-                </div>
-                <div class="card">
-                    <img src="https://www.w3schools.com/w3images/jeans3.jpg" alt="Denim Jeans" />
-                    <h2>Tailored Jeans</h2>
-                    <p class="price">$19.99</p>
-                    <p><button>Add to Cart</button></p>
-                </div>
+                {product.map((data,index) => (
+                    <Product key={index} src={data.image} title={data.title} price={data.price}/>
+                ))     
+                }
             </div>
         </>
     );
