@@ -8,7 +8,7 @@ const Product = ({src,title,price}) => {
         <div class="card">
             <img src={src} alt="Denim Jeans" />
             <div className="title">{title}</div>
-            <div>${price}</div>
+            <div className="price">${price}</div>
             <div><button>Add to Cart</button></div>
         </div>
     );
