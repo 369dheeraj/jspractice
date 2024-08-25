@@ -1,13 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../stylesheet/layout.css'
+import {getMenuLabel} from '../service/GetProductService';
+
 const Menu = () => {
 
-    const menu = [
-        { label: 'home', content: ['furniture', 'curtains', 'lightning', 'bedsheets'] },
+    const [menu, setMenu] = useState([
+        /* { label: 'home', content: ['furniture', 'curtains', 'lightning', 'bedsheets'] },
         { label: 'grocery', content: ['foodgrains', 'vegetables', 'pulses'] },
-        { label: 'fashion', content: ['mens', 'womens', 'kids'] },
-        { label: 'electronics', content: [] }
-    ];
+        { label: 'fashion', content: ['mens', 'womens', 'kids'] }, */
+        // { label: 'electronics', content: [] }
+    ]);
+
+    useEffect(()=>{
+        
+        const fetchMenuLabel = async() =>{
+            try {
+                const url='https://api.escuelajs.co/api/v1/categories';
+                const data = await getMenuLabel(url);
+                console.log('Log 1');
+                setMenu([...menu, ...data.map((item) => ({ label: item.name, content:[] }))]);
+                //setMenu((prevMenu) => [...prevMenu, ...data.map((item) => ({ label: item, content: [] }))]);
+                console.log('Log 3');
+                console.log('Categories ',menu);
+            }catch(err){
+                console.log(`Error in fetchProductList ${err}`)
+            }
+        }
+        fetchMenuLabel();
+    },[])
+
+
+
 
     const [openDropdown, setopenDropdown] = useState(null);
 

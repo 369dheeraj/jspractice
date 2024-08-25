@@ -1,28 +1,12 @@
-import {React, useEffect, useState} from "react";
+import {React} from "react";
 import Menu from "./Menu";
 import Product from "./Product";
 import '../stylesheet/layout.css'
-import getProductList from '../service/GetProductService'
-
+import { Outlet,Link } from "react-router-dom";
 
 const Layout = () => {
-
-    const [product,setProduct] = useState([]);
-
-    useEffect(()=>{
-        const fetchProductList = async() => {
-            try {
-                const url='https://fakestoreapi.com/products';
-                const data = await getProductList(url);
-                console.log(data);
-                setProduct(data);
-            }catch(err){
-                console.log(`Error in fetchProductList ${err}`)
-            }
-        }
-        fetchProductList()
-    },[])
-
+    const productFlag = false;
+   
     return (
         <>
             <div class="header">
@@ -33,12 +17,17 @@ const Layout = () => {
                     <input type="text" placeholder="Looking for something.." />
                     <button>Search</button>
                 </div>
+                <div>
+                    <Link to={"/updateProduct"}>Update Product </Link>
+                </div>
+                <div>
+                    <Link to={"/product"}>Product </Link>
+                </div>
             </div>
-            <div class="product">
-                {product.map((data,index) => (
-                    <Product key={index} src={data.image} title={data.title} price={data.price}/>
-                ))     
-                }
+            <div>
+            
+                <div><Outlet/></div>    
+    
             </div>
         </>
     );

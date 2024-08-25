@@ -8,7 +8,12 @@ const UpdateProduct = () => {
 
     const updateName = (value) => {
         setProduct((prevProduct)=>({...prevProduct,name:value}))
-        console.log('Product form '+JSON.stringify(product));
+        console.log(JSON.stringify(product))
+    }
+
+    const updatePrice = (value) => {
+        setProduct((prevProduct)=>({...prevProduct,price:value}))
+        console.log(JSON.stringify(product))
     }
     return(
         <>
@@ -19,7 +24,7 @@ const UpdateProduct = () => {
                 </div>
                 <div className='input-field'>
                     <input type="text" value={product.name} onChange={(event)=>updateName(event.target.value)}/>
-                    <input type="text" value=""/>
+                    <input type="text" value={product.price} onChange={(event)=>updatePrice(event.target.value)}/>
                 </div>
             </div>
     
